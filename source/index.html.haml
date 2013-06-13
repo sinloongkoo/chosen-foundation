@@ -1216,73 +1216,73 @@
           event is triggered:
         %code
           $(".chzn-select").bind("liszt:maxselected", function () { ... });
-        %h5 Allow Deselect on Single Selects
-        %p
-          When a single select box isn't a required field, you can set
-          %code allow_single_deselect: true
-          and Chosen will add a UI element for option deselection. This will only work if the first option has blank text.
-        %select.chzn-select-deselect{"data-placeholder" => "Your Favorite Type of Bear", :style => "width:350px;", :tabindex => "12"}
-          %option{:value => ""}
-          %option American Black Bear
-          %option Asiatic Black Bear
-          %option Brown Bear
-          %option Giant Panda
-          %option{:selected => ""} Sloth Bear
-          %option Sun Bear
-          %option Polar Bear
-          %option Spectacled Bear
-        %h5 Right to Left Support
-        %p
-          Chosen supports right to left select boxes too. just add
-          %code "chzn-rtl"
-          in addition to
-          %code "chzn-select"
-          to your select tags and you are good to go.
-        %p
-          %code
-            \&lt;select class="chzn-select
-            = succeed "\"&amp;gt;" do
-              %strong chzn-rtl
-        .row
-          .small-6.columns
-            %em Single right to left select
-            %select.chzn-select.chzn-rtl{"data-placeholder" => "Your Favorite Type of Bear", :style => "width:350px;", :tabindex => "13"}
-              %option{:value => ""}
-              %option American Black Bear
-              %option Asiatic Black Bear
-              %option Brown Bear
-              %option Giant Panda
-              %option{:selected => ""} Sloth Bear
-              %option Polar Bear
-          .small-6.columns
-            %em Multiple right to left select
-            %select.chzn-select.chzn-rtl{"data-placeholder" => "Your Favorite Types of Bear", :multiple => "", :style => "width:350px;", :tabindex => "14"}
-              %option{:value => ""}
-              %option American Black Bear
-              %option Asiatic Black Bear
-              %option Brown Bear
-              %option Giant Panda
-              %option{:selected => ""} Sloth Bear
-              %option{:selected => ""} Polar Bear
-        %h3 Change / Update Events
-        %h5 Form Field Change
-        %p When working with form fields, you often want to perform some behavior after a value has been selected or deselected. Whenever a user selects a field in Chosen, it triggers a "change" event* on the original form field. That let's you do something like this:
-        %p
-          %code $("#form_field").chosen().change( &hellip; );
-        %p
-          %strong Note:
-          Prototype doesn't offer support for triggering standard browser events.
-          %a{:href => "https://github.com/kangax/protolicious/blob/5b56fdafcd7d7662c9d648534225039b2e78e371/event.simulate.js"} Event.simulate
-          is required to trigger the change event when using the Prototype version.
-        %h5 Updating Chosen Dynamically
-        %p If you need to update the options in your select field and want Chosen to pick up the changes, you'll need to trigger the "liszt:updated" event on the field. Chosen will re-build itself based on the updated content.
-        %ul
-          %li
-            %strong jQuery Version:
-            %code $("#form_field").trigger("liszt:updated");
-          %li
-            %strong Prototype Version:
-            %code Event.fire($("form_field"), "liszt:updated");
+        -# %h5 Allow Deselect on Single Selects
+        -# %p
+        -#   When a single select box isn't a required field, you can set
+        -#   %code allow_single_deselect: true
+        -#   and Chosen will add a UI element for option deselection. This will only work if the first option has blank text.
+        -# %select.chzn-select-deselect{"data-placeholder" => "Your Favorite Type of Bear", :style => "width:350px;", :tabindex => "12"}
+        -#   %option{:value => ""}
+        -#   %option American Black Bear
+        -#   %option Asiatic Black Bear
+        -#   %option Brown Bear
+        -#   %option Giant Panda
+        -#   %option{:selected => ""} Sloth Bear
+        -#   %option Sun Bear
+        -#   %option Polar Bear
+        -#   %option Spectacled Bear
+        -# %h5 Right to Left Support
+        -# %p
+        -#   Chosen supports right to left select boxes too. just add
+        -#   %code "chzn-rtl"
+        -#   in addition to
+        -#   %code "chzn-select"
+        -#   to your select tags and you are good to go.
+        -# %p
+        -#   %code
+        -#     \&lt;select class="chzn-select
+        -#     = succeed "\"&amp;gt;" do
+        -#       %strong chzn-rtl
+        -# .row
+        -#   .small-6.columns
+        -#     %em Single right to left select
+        -#     %select.chzn-select.chzn-rtl{"data-placeholder" => "Your Favorite Type of Bear", :style => "width:350px;", :tabindex => "13"}
+        -#       %option{:value => ""}
+        -#       %option American Black Bear
+        -#       %option Asiatic Black Bear
+        -#       %option Brown Bear
+        -#       %option Giant Panda
+        -#       %option{:selected => ""} Sloth Bear
+        -#       %option Polar Bear
+        -#   .small-6.columns
+        -#     %em Multiple right to left select
+        -#     %select.chzn-select.chzn-rtl{"data-placeholder" => "Your Favorite Types of Bear", :multiple => "", :style => "width:350px;", :tabindex => "14"}
+        -#       %option{:value => ""}
+        -#       %option American Black Bear
+        -#       %option Asiatic Black Bear
+        -#       %option Brown Bear
+        -#       %option Giant Panda
+        -#       %option{:selected => ""} Sloth Bear
+        -#       %option{:selected => ""} Polar Bear
+        -# %h3 Change / Update Events
+        -# %h5 Form Field Change
+        -# %p When working with form fields, you often want to perform some behavior after a value has been selected or deselected. Whenever a user selects a field in Chosen, it triggers a "change" event* on the original form field. That let's you do something like this:
+        -# %p
+        -#   %code $("#form_field").chosen().change( &hellip; );
+        -# %p
+        -#   %strong Note:
+        -#   Prototype doesn't offer support for triggering standard browser events.
+        -#   %a{:href => "https://github.com/kangax/protolicious/blob/5b56fdafcd7d7662c9d648534225039b2e78e371/event.simulate.js"} Event.simulate
+        -#   is required to trigger the change event when using the Prototype version.
+        -# %h5 Updating Chosen Dynamically
+        -# %p If you need to update the options in your select field and want Chosen to pick up the changes, you'll need to trigger the "liszt:updated" event on the field. Chosen will re-build itself based on the updated content.
+        -# %ul
+        -#   %li
+        -#     %strong jQuery Version:
+        -#     %code $("#form_field").trigger("liszt:updated");
+        -#   %li
+        -#     %strong Prototype Version:
+        -#     %code Event.fire($("form_field"), "liszt:updated");
         %h5 Custom Width Support
         %p Using a custom width with Chosen is as easy as passing an option when you create Chosen:
         %code

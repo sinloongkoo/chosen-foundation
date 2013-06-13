@@ -9,7 +9,6 @@
   *display: inline
   .chzn-drop
     +box-sizing(border-box)
-    +box-shadow(0 4px 5px rgba(0, 0, 0, 0.15))
     background: #fff
     border: 1px solid #aaa
     border-top: 0
@@ -20,6 +19,8 @@
     width: 100%
   &.chzn-with-drop .chzn-drop
     left: 0
+  input
+    +box-shadow(none)
 
 /* @end
 
@@ -27,12 +28,8 @@
 
 .chzn-container-single
   .chzn-single
-    +background-image(linear-gradient(white 20%, #f6f6f6 50%, #eeeeee 52%, #f4f4f4 100%))
-    +border-radius(5px)
     +background-clip(padding-box)
-    +box-shadow(0 0 3px white inset, 0 1px 1px rgba(0, 0, 0, 0.1))
     background-color: #ffffff
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#eeeeee', GradientType=0 )
     border: 1px solid #aaaaaa
     display: block
     overflow: hidden
@@ -43,29 +40,30 @@
     padding: 0 0 0 8px
     color: #444444
     text-decoration: none
+    span
+      border-right: 1px solid #aaa
+      margin-right: 26px
+      display: block
+      overflow: hidden
+      white-space: nowrap
+      -o-text-overflow: ellipsis
+      -ms-text-overflow: ellipsis
+      text-overflow: ellipsis
+    abbr
+      display: block
+      position: absolute
+      right: 26px
+      top: 6px
+      width: 12px
+      height: 12px
+      font-size: 1px
+      background: url('chosen-sprite.png') -42px 1px no-repeat
+      &:hover
+        background-position: -42px -10px
   .chzn-default
     color: #999
-  .chzn-single span
-    margin-right: 26px
-    display: block
-    overflow: hidden
-    white-space: nowrap
-    -o-text-overflow: ellipsis
-    -ms-text-overflow: ellipsis
-    text-overflow: ellipsis
   .chzn-single-with-deselect span
     margin-right: 38px
-  .chzn-single abbr
-    display: block
-    position: absolute
-    right: 26px
-    top: 6px
-    width: 12px
-    height: 12px
-    font-size: 1px
-    background: url('chosen-sprite.png') -42px 1px no-repeat
-    &:hover
-      background-position: -42px -10px
   &.chzn-disabled .chzn-single abbr:hover
     background-position: -42px -10px
   .chzn-single div
@@ -81,37 +79,41 @@
       width: 100%
       height: 100%
   .chzn-search
-    padding: 3px 4px
+    padding: 0
     position: relative
     margin: 0
     white-space: nowrap
     z-index: 1010
     input
-      +background-image(linear-gradient(#eeeeee 1%, white 15%))
+      +box-shadow(none)
       +box-sizing(border-box)
       background: white url('chosen-sprite.png') no-repeat 100% -20px
-      margin: 1px 0
+      margin-bottom: 0px
       padding: 4px 20px 4px 5px
       outline: 0
-      border: 1px solid #aaa
+      border-top: 1px solid #aaa
+      border-bottom: 1px solid #aaa
+      border-left: none
+      border-right: none
       font-family: sans-serif
       font-size: 1em
       width: 100%
   .chzn-drop
-    +border-radius(0 0 4px 4px)
     +background-clip(padding-box)
     margin-top: -1px
 
-.chzn-container-single-nosearch .chzn-search
-  position: absolute
-  left: -9999px
+.chzn-container-single-nosearch 
+  .chzn-results
+    border-top: 1px solid #aaa
+  .chzn-search
+    position: absolute
+    left: -9999px
 
 /* @end
 
 /* @group Multi Chosen
 
 .chzn-container-multi .chzn-choices
-  +background-image(linear-gradient(#eeeeee 1%, white 15%))
   +box-sizing(border-box)
   background-color: #fff
   border: 1px solid #aaa
@@ -131,7 +133,6 @@
     margin: 0
     padding: 0
     input
-      +box-shadow(none)
       color: #666
       background: transparent !important
       border: 0 !important
@@ -142,14 +143,10 @@
       margin: 1px 0
       outline: 0
     .default
-      color: #999
+      +box-shadow(none)
   .search-choice
-    +border-radius(3px)
     +background-clip(padding-box)
-    +box-shadow(0 0 2px white inset, 0 1px 0 rgba(0, 0, 0, 0.05))
-    +background-image(linear-gradient(#f4f4f4 20%, #f0f0f0 50%, #e8e8e8 52%, #eeeeee 100%))
     background-color: #e4e4e4
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f4f4f4', endColorstr='#eeeeee', GradientType=0 )
     color: #333
     border: 1px solid #aaaaaa
     line-height: 13px
@@ -158,9 +155,7 @@
     position: relative
     cursor: default
     &.search-choice-disabled
-      +background-image(linear-gradient(top, #f4f4f4 20%, #f0f0f0 50%, #e8e8e8 52%, #eeeeee 100%))
       background-color: #e4e4e4
-      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f4f4f4', endColorstr='#eeeeee', GradientType=0 )
       color: #666
       border: 1px solid #cccccc
       padding-right: 5px
@@ -185,9 +180,9 @@
 /* @group Results
 
 .chzn-container .chzn-results
-  margin: 0 4px 4px 0
+  margin: 0 
   max-height: 240px
-  padding: 0 0 0 4px
+  padding: 0
   position: relative
   overflow-x: hidden
   overflow-y: auto
@@ -208,10 +203,12 @@
     cursor: pointer
     display: list-item
   .highlighted
-    +background-image(linear-gradient(#3875d7 20%, #2a62bc 90%))
-    background-color: #3875d7
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#3875d7', endColorstr='#2a62bc', GradientType=0 )
-    color: #fff
+    background-color: #cdebf5
+    &:after
+      content: "\2013" 
+      position: absolute 
+      right: 10px 
+      color: #acdeee
   li em
     background: #feffde
     font-style: normal
@@ -229,6 +226,15 @@
 
 .chzn-container-multi .chzn-drop .result-selected
   display: none
+
+.chzn-drop .result-selected
+  background-color: #acdeee
+  &:after
+    content: "\2013" 
+    color: #cdebf5
+    position: absolute 
+    right: 10px 
+
 
 .chzn-container
   .chzn-results-scroll
@@ -257,23 +263,15 @@
 
 .chzn-container-active
   .chzn-single
-    +box-shadow(0 0 5px rgba(0, 0, 0, 0.3))
     border: 1px solid #5897fb
   &.chzn-with-drop .chzn-single
-    +box-shadow(0 1px 0 #fff inset)
-    +background-image(linear-gradient(#eeeeee 20%, white 80%))
-    +border-bottom-left-radius(0)
-    +border-bottom-right-radius(0)
     border: 1px solid #aaa
-    background-color: #eee
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#eeeeee', endColorstr='#ffffff', GradientType=0 )
     div
       background: transparent
       border-left: none
       b
         background-position: -18px 2px
   .chzn-choices
-    +box-shadow(0 0 5px rgba(0, 0, 0, 0.3))
     border: 1px solid #5897fb
     .search-field input
       color: #111 !important
@@ -334,7 +332,6 @@
   &.chzn-container-active.chzn-with-drop .chzn-single div
     border-right: none
   .chzn-search input
-    +background-image(linear-gradient(#eeeeee 1%, white 15%))
     background: white url('chosen-sprite.png') no-repeat -30px -20px
     padding: 4px 5px 4px 20px
     direction: rtl
