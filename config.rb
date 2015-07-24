@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ###
 # Compass
 ###
@@ -82,3 +83,13 @@ configure :build do
   # Or use a different image path
   # set :http_path, "/Content/images/"
 end
+=======
+http_path = "/"
+css_dir = "public"
+sass_dir = "sass"
+images_dir = "public"
+
+relative_assets = true
+line_comments = false
+asset_cache_buster :none
+>>>>>>> upstream/master
